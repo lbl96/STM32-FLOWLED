@@ -1,0 +1,76 @@
+STM32 FLOWLED
+#include "stm32f10x.h"  
+#include "bsp_led.h"
+#include "bsp_key.h"
+
+void Delay( uint32_t count );
+
+int main(void)
+{
+
+	LED_GPIO_Config();
+  KEY_GPIO_Config();
+	SysTick_Config(72);
+		
+		//if(Key_Scan(KEY1_GPIO_PORT,KEY1_GPIO_PIN) == KEY_OFF){
+			
+				 while(1){
+			   if(Key_Scan(KEY1_GPIO_PORT,KEY1_GPIO_PIN) == KEY_ON){
+					 while(1){
+			
+			   LED_B(ON);
+				 LED_G(ON);
+				 SYSTICK_Delay_haomiao(500);
+				 LED_B(OFF);
+				
+				 LED_R(ON);
+				 SYSTICK_Delay_haomiao(500);
+				 LED_R(OFF);
+				
+				 LED_G(ON);
+				 LED_B(ON);
+				 SYSTICK_Delay_haomiao(500);
+				 LED_G(OFF);
+				
+				 LED_R(ON);
+				 SYSTICK_Delay_haomiao(500);
+				 LED_B(OFF);
+				 LED_R(OFF);
+					 
+				 LED_B(ON);
+				 SYSTICK_Delay_haomiao(500);
+				  LED_B(OFF);
+				 LED_R(ON);
+				 	 SYSTICK_Delay_haomiao(500);
+					 LED_G(ON);
+					 	 SYSTICK_Delay_haomiao(500);
+						   if(Key_Scan(KEY2_GPIO_PORT,KEY2_GPIO_PIN) == KEY_ON){
+								 SYSTICK_Delay_haomiao(50);
+								  LED_G(ON);
+								  LED_R(ON);
+								  LED_B(ON);
+								  LED_G(OFF);
+								  LED_R(OFF);
+								  LED_B(OFF);
+								 break;
+							 }
+					 }
+					 }
+				
+}
+				/*  if(Key_Scan(KEY2_GPIO_PORT,KEY2_GPIO_PIN) == KEY_ON){
+						GPIO_SetBits(LED_B_GPIO_PORT, LED_B_GPIO_PIN);
+						GPIO_SetBits(LED_G_GPIO_PORT, LED_G_GPIO_PIN);
+						GPIO_SetBits(LED_R_GPIO_PORT, LED_R_GPIO_PIN);
+
+	}*/
+
+}
+	
+void Delay( uint32_t count )
+{
+//	uint32_t count;
+	for(; count!=0; count--);
+}
+
+
